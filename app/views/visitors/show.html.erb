@@ -1,4 +1,12 @@
 <p id="notice"><%= notice %></p>
 
+  <h3>Picture</h3>
+  <%= image_tag visitor_picture_path(@visitor) %>
+
+  <h3>Typeform Token</h3>
+  <p class="lead">
+    <%= @visitor.typeform_token %>
+  </p>
+
 <%= link_to 'Edit', edit_visitor_path(@visitor) %> |
 <%= link_to 'Back', visitors_path %>
