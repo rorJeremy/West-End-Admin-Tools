@@ -1,5 +1,5 @@
 class VisitorsController < ApplicationController
-  before_action :set_visitor, only: [:show, :edit, :update, :destroy]
+  before_action :set_visitor, only: [:show, :edit, :update, :destroy, :picture]
 
   # GET /visitors
   # GET /visitors.json
@@ -11,6 +11,11 @@ class VisitorsController < ApplicationController
   # GET /visitors/1.json
   def show
   end
+  
+  def picture
+    send_data(@visitor.picture, type: 'image/png', disposition: 'inline')
+  end
+
 
   # GET /visitors/new
   def new
@@ -24,13 +29,17 @@ class VisitorsController < ApplicationController
   # POST /visitors
   # POST /visitors.json
   def create
-    @visitor = Visitor.new(visitor_params)
+    @visitor = Visitor.new(visitor_params.merge(picture: params[:visitor][:picture].read))
 
     respond_to do |format|
       if @visitor.save
+        flash[:notice] = 'Visitor was saved!'
+
         format.html { redirect_to @visitor, notice: 'Visitor was successfully created.' }
         format.json { render :show, status: :created, location: @visitor }
       else
+        flash[:error] = @visitor.errors
+
         format.html { render :new }
         format.json { render json: @visitor.errors, status: :unprocessable_entity }
       end
@@ -69,6 +78,6 @@ class VisitorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def visitor_params
-      params.fetch(:visitor, {})
+      params.require(:visitor).permit(:typeform_token, :picture)
     end
 end
