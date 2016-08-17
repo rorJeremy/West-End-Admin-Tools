@@ -1,10 +1,12 @@
 class VisitorsController < ApplicationController
+  include VisitorsHelper
   before_action :set_visitor, only: [:show, :edit, :update, :destroy, :picture]
 
   # GET /visitors
   # GET /visitors.json
   def index
     @visitors = Visitor.all
+    @visitorz = only_completed_survey_results(Visitor.visitor_typeform_results)
   end
 
   # GET /visitors/1
