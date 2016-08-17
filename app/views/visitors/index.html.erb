@@ -2,27 +2,43 @@
 
 <h1>Visitors</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Picture</th>
-      <th>Token</th>
-      <th>More Info</th>
-      <th>Edit</th>
-      <th>Delete</th>
-    </tr>
-  </thead>
+<div class="container-fluid">
+  <div class="table-responsive">
+    <table class="table table-condensed">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>Home Address</th>
+          <th>Gender</th>
+          <th>Age Range</th>
 
-  <tbody>
-    <% @visitors.each do |visitor| %>
-      <tr>
-        <td><%= link_to 'Show', visitor %></td>
-        <td><%= link_to 'Edit', edit_visitor_path(visitor) %></td>
-        <td><%= link_to 'Destroy', visitor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+          <th>More Info</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @visitorz.each do |visitor| %>
+          <% visitor_id = get_visitor_id(visitor["token"]) %>
+          <tr>
+
+            <td><%= visitor["answers"]["textfield_26901017"] %></td>
+            <td><%= visitor["answers"]["textfield_26901059"] %></td>
+            <td><%= visitor["answers"]["textfield_26901167"] %></td>
+            <td><%= visitor["answers"]["textfield_26901172"] %></td>
+            <td><%= visitor["answers"]["textfield_26901204"] %></td>
+            <td><%= visitor["answers"]["list_26900761_choice"] %></td>
+            <td><%= visitor["answers"]["list_26900762_choice"] %></td> 
+
+            <td><%= link_to 'Show', visitor_path(visitor_id) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <br>
 
