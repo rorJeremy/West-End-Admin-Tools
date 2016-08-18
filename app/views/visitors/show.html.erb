@@ -1,12 +1,82 @@
+<section class="breadcrumb-wrapper">
+    <div class="container">
+        <h2>Visitor</h2>
+        <ol class="breadcrumb">
+            <li><%= link_to "Visitors", visitors_path %></li>
+            <li class="active"><%= @visitorr["answers"]["textfield_26901017"] %> <%= @visitorr["answers"]["textfield_26901059"] %></li>
+        </ol>
+    </div>
+</section>
+
 <p id="notice"><%= notice %></p>
 
-  <h3>Picture</h3>
-  <%= image_tag visitor_picture_path(@visitor) %>
+				<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+   
+   
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title"><%= @visitorr["answers"]["textfield_26901017"] %> <%= @visitorr["answers"]["textfield_26901059"] %></h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-3 col-lg-3 " align="center"> 
+                	<%= image_tag visitor_picture_path(@visitor), class: "img-responsive" %> 
+                </div>
 
-  <h3>Typeform Token</h3>
-  <p class="lead">
-    <%= @visitor.typeform_token %>
-  </p>
+                <div class=" col-md-9 col-lg-9 "> 
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>Typeform Token:</td>
+                        <td style="word-break:break-all;"><%= @visitor.typeform_token %></td>
+                      </tr>                    
+                      <tr>
+                        <td>Times Visited This Church:</td>
+                        <td><%= @visitorr["answers"]["list_26901296_choice"] %></td>
+                      </tr>
+                      <tr>
+                        <td>Country Born In:</td>
+                        <td><%= @visitorr["answers"]["dropdown_26900767"] %></td>
+                      </tr>
+                      <tr>
+                        <td>Ethnicity:</td>
+                        <td><%= @visitorr["answers"]["list_26900763_choice"] %></td>
+                      </tr>
+                      <tr>
+                        <td>Marital Status:</td>
+                        <td><%= @visitorr["answers"]["list_26900764_choice"] %></td>
+                      </tr>
+                      <tr>
+                        <td># of people you live with:</td>
+                        <td><%= @visitorr["answers"]["rating_26900769"] %></td>
+                      </tr>
+                      <tr>
+                        <td>Most Used Form of Transportation:</td>
+                        <td><%= @visitorr["answers"]["listimage_26900770_choice"] %></td>
+                      </tr>
+                      <tr>
+                        <td>Level of Education:</td>
+                        <td><%= @visitorr["answers"]["list_26900765_choice"] %></td>
+                      </tr>
+                      <tr>
+                        <td>Industry Working In:</td>
+                        <td><%= @visitorr["answers"]["dropdown_26900768"] %></td>
+                      </tr>                                                             
+                      <tr>
+                        <td>Income:</td>
+                        <td><%= @visitorr["answers"]["list_26900766_choice"] %></td>
+                      </tr>
+                    </tbody>
+                  </table>
 
-<%= link_to 'Edit', edit_visitor_path(@visitor) %> |
-<%= link_to 'Back', visitors_path %>
+							    <%= link_to "Edit", edit_visitor_path(@visitor), class: "btn btn-lg btn-info" %>
+
+							    <%= link_to "Delete", @visitor, class: "btn btn-lg btn-danger", method: "delete", data: { confirm: "Are you sure want to delete this visitor? This is a permanent removal." } %>
+
+							    <%= link_to "Back", visitors_path, class: "btn btn-lg btn-default" %>
+
+                </div>
+              </div>
+            </div>           
+          </div>
+        </div>
