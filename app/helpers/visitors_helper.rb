@@ -11,4 +11,8 @@ module VisitorsHelper
 			return 1
 		end
 	end
+
+	def survey_based_on_token(visitors, token)
+		return visitors.select{|result| result["token"]==token}
+	end
 end

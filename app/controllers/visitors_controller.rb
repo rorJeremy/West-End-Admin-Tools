@@ -1,6 +1,6 @@
 class VisitorsController < ApplicationController
   include VisitorsHelper
-  before_action :set_visitor, only: [:show, :edit, :update, :destroy, :picture]
+  before_action :set_visitor, only: [:edit, :update, :destroy, :picture]
 
   # GET /visitors
   # GET /visitors.json
@@ -12,6 +12,10 @@ class VisitorsController < ApplicationController
   # GET /visitors/1
   # GET /visitors/1.json
   def show
+    # raise "hello"
+    @visitor = Visitor.find(params[:id])
+    @visitorz = only_completed_survey_results(Visitor.visitor_typeform_results)
+    @visitorr = survey_based_on_token(@visitorz, @visitor.typeform_token)
   end
   
   def picture
