@@ -15,7 +15,7 @@ class VisitorsController < ApplicationController
     # raise "hello"
     @visitor = Visitor.find(params[:id])
     @visitorz = only_completed_survey_results(Visitor.visitor_typeform_results)
-    @visitorr = survey_based_on_token(@visitorz, @visitor.typeform_token)
+    @visitorr = survey_based_on_token(@visitorz, @visitor.typeform_token).first
   end
   
   def picture
