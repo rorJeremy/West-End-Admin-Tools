@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160815031254) do
+ActiveRecord::Schema.define(version: 20160819194851) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "typeforms", force: :cascade do |t|
+    t.string   "token",        null: false
+    t.string   "which_survey", null: false
+    t.integer  "lock_version"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "visitors", force: :cascade do |t|
     t.string   "typeform_token", null: false
