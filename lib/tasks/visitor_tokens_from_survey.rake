@@ -8,7 +8,9 @@ namespace :visitor_tokens_from_survey do
     completed_survey_results = results.select{|result| result["completed"]=="1"}
 
     completed_survey_results.each do |result|
-      Typeform.create!(token: result["token"], which_survey: "#{ENV['VISITOR_DEMOGRAPHIC_TYPEFORM_UID']}")
+      if Typeform.find_by(token: result["token"]).nil?
+        Typeform.create!(token: result["token"], which_survey: "#{ENV['VISITOR_DEMOGRAPHIC_TYPEFORM_UID']}")
+      end
     end
   end
 end
