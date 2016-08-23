@@ -1,4 +1,4 @@
-class Visitor < ApplicationRecord
+class Visitor < ActiveRecord::Base
   include HTTParty
   format :json
 

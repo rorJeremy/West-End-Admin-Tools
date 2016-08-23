@@ -19,8 +19,12 @@
             </div>
             <div class="panel-body">
               <div class="row">
-                <div class="col-md-3 col-lg-3 " align="center"> 
-                	<%= image_tag visitor_picture_path(@visitor), class: "img-responsive" %> 
+                <div class="col-md-3 col-lg-3 " align="center">
+                	<% if @visitor.picture.nil? %>
+                		<img alt="Visitor Pic" src="http://canadatutors.ca/assets/pics/default-profile.png" class="img-circle img-responsive">
+                	<% else %>
+                		<%= image_tag visitor_picture_path(@visitor), class: "img-responsive", alt:"Visitor Pic" %>
+                	<% end %>
                 </div>
 
                 <div class=" col-md-9 col-lg-9 "> 
@@ -28,7 +32,7 @@
                     <tbody>
                       <tr>
                         <td>Typeform Token:</td>
-                        <td style="word-break:break-all;"><%= @visitor["token"] %></td>
+                        <td style="word-break:break-all;"><%= @visitorr["token"] %></td>
                       </tr>                    
                       <tr>
                         <td>Times Visited This Church:</td>
