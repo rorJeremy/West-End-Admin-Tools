@@ -33,7 +33,27 @@
                       <tr>
                         <td>Typeform Token:</td>
                         <td style="word-break:break-all;"><%= @visitorr["token"] %></td>
-                      </tr>                    
+                      </tr>
+                      <tr>
+                        <td>Phone</td>
+                        <td><%= @visitorr["answers"]["textfield_26901167"] %></td>
+                      </tr>
+                      <tr>
+                        <td>Email</td>
+                        <td><%= @visitorr["answers"]["textfield_26901172"] %></td>
+                      </tr>
+                      <tr>
+                        <td>Home Address</td>
+                        <td><%= @visitorr["answers"]["textfield_26901204"] %></td>
+                      </tr>
+                      <tr>
+                        <td>Gender</td>
+                        <td><%= @visitorr["answers"]["list_26900761_choice"] %></td>
+                      </tr>
+                      <tr>
+                        <td>Age Range</td>
+                        <td><%= @visitorr["answers"]["list_26900762_choice"] %></td>
+                      </tr>
                       <tr>
                         <td>Times Visited This Church:</td>
                         <td><%= @visitorr["answers"]["list_26901296_choice"] %></td>
