@@ -1,4 +1,4 @@
-<%= form_for(visitor) do |f| %>
+<%= form_for visitor, :html => { :multipart => true } do |f| %>
   <% if visitor.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(visitor.errors.count, "error") %> prohibited this visitor from being saved:</h2>
@@ -13,8 +13,8 @@
 
   <div class="actions">
     <div class="form-group">
-      <%= f.label :typeform_token %>
-      <%= f.text_field :typeform_token, placeholder: 'e86492870ad68b5d154722f9f8c04e8b', class: "form-control", required: true %>
+      <%= f.label :typeform_id %><br>
+      <%= f.select :typeform_id, Typeform.all.map { |tf| [tf.token, tf.id] }, {}, {class: 'form-control', include_blank: true} %>
     </div>
     <div class="form-group">
       <%= f.label 'Picture Upload - Please Keep Uploads below 1MB' %>

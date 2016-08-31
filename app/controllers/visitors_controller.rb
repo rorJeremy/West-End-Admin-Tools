@@ -15,7 +15,8 @@ class VisitorsController < ApplicationController
     # raise "hello"
     @visitor = Visitor.find(params[:id])
     @visitorz = only_completed_survey_results(Visitor.visitor_typeform_results)
-    @visitorr = survey_based_on_token(@visitorz, @visitor.typeform_token).first
+    @visitorr = survey_based_on_token(@visitorz, @visitor.typeform.token).first
+    # raise "hi"
   end
   
   def picture
@@ -55,8 +56,8 @@ class VisitorsController < ApplicationController
   # PATCH/PUT /visitors/1
   # PATCH/PUT /visitors/1.json
   def update
-    respond_to do |format|
-      if @visitor.update(visitor_params)
+    respond_to do |format|      
+      if @visitor.update(visitor_params.merge(picture: params[:visitor][:picture].read))
         format.html { redirect_to @visitor, notice: 'Visitor was successfully updated.' }
         format.json { render :show, status: :ok, location: @visitor }
       else
@@ -84,6 +85,6 @@ class VisitorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def visitor_params
-      params.require(:visitor).permit(:typeform_token, :picture)
+      params.require(:visitor).permit(:typeform_id, :picture)
     end
 end

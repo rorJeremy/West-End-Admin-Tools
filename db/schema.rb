@@ -10,17 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160815031254) do
+ActiveRecord::Schema.define(version: 20160819230849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "visitors", force: :cascade do |t|
-    t.string   "typeform_token", null: false
-    t.binary   "picture",        null: false
+  create_table "typeforms", force: :cascade do |t|
+    t.string   "token",        null: false
+    t.string   "which_survey", null: false
     t.integer  "lock_version"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
+  create_table "visitors", force: :cascade do |t|
+    t.integer  "lock_version"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "typeform_id"
+    t.binary   "picture"
+    t.index ["typeform_id"], name: "index_visitors_on_typeform_id", using: :btree
+  end
+
+  add_foreign_key "visitors", "typeforms"
 end

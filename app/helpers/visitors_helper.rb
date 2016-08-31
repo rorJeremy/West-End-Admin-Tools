@@ -4,7 +4,8 @@ module VisitorsHelper
 	end
 
 	def get_visitor_id(visitor_token)
-		visitor = Visitor.find_by(typeform_token: visitor_token)
+		associated_typeform = Typeform.find_by(token: visitor_token)
+		visitor = Visitor.find_by(typeform_id: associated_typeform.id)
 		unless visitor == nil
 			return visitor.id
 		else 
