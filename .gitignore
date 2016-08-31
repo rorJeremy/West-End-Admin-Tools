@@ -7,6 +7,8 @@
 # Not going to commit the .env file..
 .env
 
+mydb.dump
+
 # Ignore bundler config.
 /.bundle
 

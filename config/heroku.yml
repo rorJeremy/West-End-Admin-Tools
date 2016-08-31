@@ -1,12 +1,11 @@
 production:
   app: westend-admin-tools
-  repo: git@heroku.com:westend-admin-tools.git
+  repo: https://git.heroku.com/westend-admin-tools.git
   config:
     BUNDLE_WITHOUT: "development:test"
 
 staging:
   app: westend-admin-tools-staging
-  repo: git@heroku.com:westend-admin-tools-staging.git
+  repo: https://git.heroku.com/westend-admin-tools-staging.git
   config: &default
     BUNDLE_WITHOUT: "development:test"
-
